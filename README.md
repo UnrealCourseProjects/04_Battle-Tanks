@@ -7,3 +7,4 @@ to the Udemy Course provided.
 ## Lectures Completed
 * 01 Intro, Notes and Assets
 * 02 Game Design Document (GDD)
+* 03 Set up GitHub Repository
