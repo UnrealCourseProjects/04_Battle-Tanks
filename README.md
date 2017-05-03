@@ -5,5 +5,5 @@ I'm using this class to learn the Unreal Engine and get reaquanted with C++ code
 to the Udemy Course provided.
 
 ## Lectures Completed
-01 Intro, Notes and Assets
-02 Game Design Document (GDD)
+* 01 Intro, Notes and Assets
+* 02 Game Design Document (GDD)
