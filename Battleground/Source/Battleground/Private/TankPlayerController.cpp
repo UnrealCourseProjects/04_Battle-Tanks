@@ -40,8 +40,7 @@ void ATankPlayerController::AimTowardsCrosshairs()
 	FVector HitLocation;
 	if (GetSightRayHitLocation(HitLocation))// Has "side-effect", is going to line trace
 	{
-		UE_LOG(LogTemp, Warning, TEXT("HitLocaton: %s"), *HitLocation.ToString());
-		// TODO Tell controlled tank to aim at this point
+		GetControlledTank()->AimAt(HitLocation);
 	}
 		
 }
