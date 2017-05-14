@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Battleground.h"
+#include "TankBarrel.h"
 #include "TankAimingComponent.h"
 
 
@@ -15,7 +16,7 @@ UTankAimingComponent::UTankAimingComponent()
 }
 
 
-void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent * BarrelToSet)
+void UTankAimingComponent::SetBarrelReference(UTankBarrel * BarrelToSet)
 {
 	Barrel = BarrelToSet;
 }
@@ -47,8 +48,8 @@ void UTankAimingComponent::MoveBarrelTracking(FVector AimDirection)
 	//Work-out difference between current barrel rotation, and AimDirection
 	auto BarrelRotation = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotation = AimDirection.Rotation();
-	UE_LOG(LogTemp, Warning, TEXT("AimAsRation: %s"), *AimAsRotation.ToString());
-	//Move the barrel the right amount this frame
-	//Given a max elevation speed, and the frame time
-
+	auto DeltaRotator = AimAsRotation - BarrelRotation;
+	
+	
+	Barrel->Elevate(5);//TODO remove magic number
 }
