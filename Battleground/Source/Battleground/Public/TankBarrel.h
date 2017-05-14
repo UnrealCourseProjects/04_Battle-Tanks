@@ -19,7 +19,7 @@ public:
 	
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxDegreesPerSecond = 3; // Sensible angle
+		float MaxDegreesPerSecond = 10; // Sensible angle
 
 	UPROPERTY(EditAnywhere, Category = Setup)
 		float MaxElevationDegrees = 30; // Sensible high elevation
