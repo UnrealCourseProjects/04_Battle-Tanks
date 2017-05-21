@@ -36,6 +36,8 @@ private:
 	// Sets default values for this pawn's properties
 	ATank();
 	
+	virtual void BeginPlay();
+
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile>ProjectileBlueprint;
 
