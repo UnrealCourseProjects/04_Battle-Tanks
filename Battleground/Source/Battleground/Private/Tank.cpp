@@ -21,6 +21,8 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay(); //Needed for BP to begin play!!
+	auto TankName = GetName();
+	UE_LOG(LogTemp, Warning, TEXT("Omchom: Tank name: %s"), *TankName);
 }
 
 void ATank::TankFire()
