@@ -16,19 +16,9 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
-void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
-{	
-	if (!BarrelToSet) { 
-		UE_LOG(LogTemp, Warning, TEXT("There is no barrel"));
-		return; }
-	Barrel = BarrelToSet;
-}
-
-void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
+void UTankAimingComponent::Initialise(UTankBarrel * BarrelToSet, UTankTurret * TurretToSet)
 {
-	if (!TurretToSet) { 
-		UE_LOG(LogTemp, Warning, TEXT("There is no turret"));
-		return; }
+	Barrel = BarrelToSet;
 	Turret = TurretToSet;
 }
 
@@ -59,6 +49,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 }
 void UTankAimingComponent::MoveBarrelTracking(FVector AimDirection)
 {
+	if (!Barrel || !Turret) { return; }
 	//Work-out difference between current barrel rotation, and AimDirection
 	auto BarrelRotation = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotation = AimDirection.Rotation();
