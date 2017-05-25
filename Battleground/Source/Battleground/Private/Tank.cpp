@@ -5,6 +5,11 @@
 
 
 
+float ATank::GetHealthPercent() const
+{
+	return (float)CurrentHealth/(float)StartingHealth;
+}
+
 // Sets default values
 ATank::ATank()
 {
@@ -12,6 +17,11 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 
 	
+}
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+	CurrentHealth = StartingHealth;
 }
 float ATank::TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser)
 {
@@ -21,10 +31,8 @@ float ATank::TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEv
 	CurrentHealth -= DamageToApply;
 	if (CurrentHealth <= 0)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("The tank is dead!!1"));
+		OnDeath.Broadcast();
 	}
-
-	UE_LOG(LogTemp, Warning, TEXT("DamageAmount = %f, DamageToApply = %i"), DamageAmount, DamageToApply);
 
 	return DamageToApply;
 }
